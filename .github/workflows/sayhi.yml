@@ -1,16 +1,19 @@
 name: Say Hi
-on: pull_request
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
-  check-pull-request:
+  create-pull-request:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v4
         with:
           script: |
-            github.issues.createComment({
-              issue_number: context.issue.number,
+            github.pulls.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for reporting!'
+              head: 'master',
+              base: 'production'
             })
