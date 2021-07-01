@@ -15,5 +15,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               head: 'master',
-              base: 'production'
+              base: 'production',
+              title: 'Release 1.0'
             })
