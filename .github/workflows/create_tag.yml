@@ -1,0 +1,19 @@
+name: Create tag
+on: 
+  push:
+    branches:
+      - production
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v4
+        with:
+          script: |
+            github.createTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: 'v0.0.1',
+              message: 'production',
+            })
